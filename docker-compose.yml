@@ -1,0 +1,17 @@
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/DockerFile
+    ports:
+      - "9000:8000"
+    environment:
+      DATABASE_URL: "postgresql://fastapply:fastapi@localhost/FastApplyProject"
+
+  bot:
+    build:
+      context: .
+      dockerfile: bot/DockerFile
+    depends_on:
+      - backend

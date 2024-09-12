@@ -1,0 +1,19 @@
+# Dockerfile for bot
+
+# Use the official Python image from the Docker Hub
+FROM python:3.11-slim
+
+# Set the working directory
+WORKDIR /bot
+
+# Copy the requirements file into the container
+COPY requirements.txt requirements.txt 
+
+# Install the dependencies
+RUN pip install -r requirements.txt
+
+# Copy the rest of the bot code into the container
+COPY . .
+
+# Define the command to run the bot
+CMD ["python3", "run.py"]
